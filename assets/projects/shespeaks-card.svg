@@ -51,7 +51,7 @@
       
       <!-- Tech Pills (Compact) -->
       <g transform="translate(0, 140)">
-        <text x="0" y="0" font-family="monospace" font-size="10" fill="#6366F1">#ANONYMITY &nbsp;#SECURE-REPORTING</text>
+        <text x="0" y="0" font-family="monospace" font-size="10" fill="#6366F1">#ANONYMITY &#160;#SECURE-REPORTING</text>
       </g>
       
       <!-- CTA -->

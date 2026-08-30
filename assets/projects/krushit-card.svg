@@ -64,7 +64,7 @@
       
       <!-- Tech Pills (Compact) -->
       <g transform="translate(0, 140)">
-        <text x="0" y="0" font-family="monospace" font-size="10" fill="#10B981">#IOT-SENSORS &nbsp;#TENSORFLOW &nbsp;#FASTAPI</text>
+        <text x="0" y="0" font-family="monospace" font-size="10" fill="#10B981">#IOT-SENSORS &#160;#TENSORFLOW &#160;#FASTAPI</text>
       </g>
       
       <!-- CTA -->
