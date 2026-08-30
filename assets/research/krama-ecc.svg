@@ -1,72 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="250">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#050507" />
-      <stop offset="100%" stop-color="#0B0B12" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Inter:wght@400;600&amp;display=swap');
+      
+      .bg { fill: #0B0B12; stroke: rgba(255,255,255,0.08); stroke-width: 1; rx: 16; }
+      
+      .stage-title { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; fill: #a1a1aa; letter-spacing: 2px; }
+      .title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; fill: #ffffff; letter-spacing: 1px; }
+      
+      .flow-path { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 2; stroke-dasharray: 4, 4; }
+      .flow-pulse { fill: none; stroke: url(#gradient-accent); stroke-width: 3; }
+      
+      .node-box { fill: #050507; stroke: rgba(255,255,255,0.15); stroke-width: 1; rx: 8; }
+      
+      @keyframes flow {
+        0% { stroke-dashoffset: 100; opacity: 0; }
+        20% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { stroke-dashoffset: -100; opacity: 0; }
+      }
+      .anim-flow { animation: flow 5s linear infinite; stroke-dasharray: 40, 200; }
+      
+      .glow { fill: url(#glow-center); opacity: 0.2; }
+    </style>
+
+    <linearGradient id="gradient-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="50%" stop-color="#06B6D4" />
+      <stop offset="100%" stop-color="#10B981" />
     </linearGradient>
-    <linearGradient id="flow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#6366F1" />
-      <stop offset="50%" stop-color="#A855F7" />
-      <stop offset="100%" stop-color="#06B6D4" />
-    </linearGradient>
+
+    <radialGradient id="glow-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="1" />
+      <stop offset="100%" stop-color="#050507" stop-opacity="0" />
+    </radialGradient>
   </defs>
 
-  <rect width="800" height="250" fill="url(#bg)" />
+  <rect width="800" height="250" fill="#050507" />
+  
+  <rect width="798" height="248" x="1" y="1" class="bg" />
 
-  <text x="400" y="40" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="16" font-weight="600" fill="#E4E4E7" text-anchor="middle" letter-spacing="2">
-    KRAMA-PĀṬHA INSPIRED ECC
-  </text>
-  <text x="400" y="65" font-family="'Inter', sans-serif" font-size="12" font-weight="400" fill="#A1A1AA" text-anchor="middle">
-    Error correction modeling inspired by ancient Vedic recitation patterns.
-  </text>
+  <text x="400" y="40" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="2" text-anchor="middle">KRAMA-P&#256;&#7788;HA INSPIRED ECC</text>
+  <text x="400" y="65" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#8B5CF6" letter-spacing="3" text-anchor="middle">RESEARCH VISUALIZATION</text>
 
-  <!-- Diagram boxes -->
-  <g transform="translate(100, 120)">
-    <!-- Node 1 -->
-    <rect width="90" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" />
-    <text x="45" y="24" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#FFFFFF" text-anchor="middle">DATA</text>
-
-    <!-- Arrow 1 -->
-    <path d="M90,20 L130,20" stroke="url(#flow-grad)" stroke-width="2" fill="none" marker-end="url(#arrow)" />
-
-    <!-- Node 2 -->
-    <rect x="130" width="110" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(99, 102, 241, 0.5)" stroke-width="1.5" />
-    <text x="185" y="24" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#FFFFFF" text-anchor="middle">KRAMA CHAIN</text>
-
-    <!-- Arrow 2 -->
-    <path d="M240,20 L280,20" stroke="url(#flow-grad)" stroke-width="2" fill="none" marker-end="url(#arrow)" />
-
-    <!-- Node 3 -->
-    <rect x="280" width="90" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(168, 85, 247, 0.5)" stroke-width="1.5" />
-    <text x="325" y="24" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#FFFFFF" text-anchor="middle">SYNDROME</text>
-
-    <!-- Arrow 3 -->
-    <path d="M370,20 L410,20" stroke="url(#flow-grad)" stroke-width="2" fill="none" marker-end="url(#arrow)" />
+  <g transform="translate(60, 120)">
+    <!-- Base Flow Line -->
+    <path class="flow-path" d="M 50 25 L 630 25" />
     
-    <!-- Node 4 -->
-    <rect x="410" width="130" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(6, 182, 212, 0.5)" stroke-width="1.5" />
-    <text x="475" y="24" font-family="'Inter', sans-serif" font-size="11" font-weight="500" fill="#FFFFFF" text-anchor="middle">RECONSTRUCTION</text>
+    <!-- Animated Flow -->
+    <path class="flow-pulse anim-flow" d="M 50 25 L 630 25" />
+    <path class="flow-pulse anim-flow" d="M 50 25 L 630 25" style="animation-delay: 2.5s;" />
+
+    <!-- Nodes -->
+    <!-- 1: DATA -->
+    <rect x="0" y="0" width="100" height="50" class="node-box" />
+    <text x="50" y="29" class="stage-title" text-anchor="middle">RAW DATA</text>
+    
+    <!-- 2: KRAMA CHAIN -->
+    <rect x="140" y="-15" width="120" height="80" class="node-box" stroke="#8B5CF6" />
+    <circle cx="200" cy="25" r="50" class="glow" />
+    <text x="200" y="20" class="stage-title" fill="#8B5CF6" text-anchor="middle">KRAMA</text>
+    <text x="200" y="38" class="stage-title" fill="#8B5CF6" text-anchor="middle">CHAINING</text>
+    
+    <!-- 3: SYNDROME -->
+    <rect x="300" y="0" width="100" height="50" class="node-box" />
+    <text x="350" y="29" class="stage-title" text-anchor="middle">SYNDROME</text>
+    
+    <!-- 4: RECONSTRUCTION -->
+    <rect x="440" y="-15" width="120" height="80" class="node-box" stroke="#06B6D4" />
+    <circle cx="500" cy="25" r="50" class="glow" />
+    <text x="500" y="20" class="stage-title" fill="#06B6D4" text-anchor="middle">ERROR</text>
+    <text x="500" y="38" class="stage-title" fill="#06B6D4" text-anchor="middle">RECOVERY</text>
+    
+    <!-- 5: CORRECTED -->
+    <rect x="600" y="0" width="100" height="50" class="node-box" stroke="#10B981" />
+    <text x="650" y="29" class="stage-title" fill="#10B981" text-anchor="middle">CORRECTED</text>
+    
+    <!-- Arrows -->
+    <path d="M 100 25 L 135 25 M 125 15 L 135 25 L 125 35" fill="none" stroke="#666" stroke-width="2" />
+    <path d="M 260 25 L 295 25 M 285 15 L 295 25 L 285 35" fill="none" stroke="#666" stroke-width="2" />
+    <path d="M 400 25 L 435 25 M 425 15 L 435 25 L 425 35" fill="none" stroke="#666" stroke-width="2" />
+    <path d="M 560 25 L 595 25 M 585 15 L 595 25 L 585 35" fill="none" stroke="#666" stroke-width="2" />
   </g>
-
-  <!-- Markers -->
-  <defs>
-    <marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M0,0 L6,3 L0,6" fill="none" stroke="#A855F7" stroke-width="1.5" />
-    </marker>
-  </defs>
-
-  <!-- Flowing particles -->
-  <circle r="3" fill="#6366F1">
-    <animateMotion dur="4s" repeatCount="indefinite" path="M 190,140 L 230,140" />
-    <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite"/>
-  </circle>
-  <circle r="3" fill="#A855F7">
-    <animateMotion dur="4s" repeatCount="indefinite" path="M 340,140 L 380,140" />
-    <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite"/>
-  </circle>
-  <circle r="3" fill="#06B6D4">
-    <animateMotion dur="4s" repeatCount="indefinite" path="M 470,140 L 510,140" />
-    <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite"/>
-  </circle>
-
 </svg>

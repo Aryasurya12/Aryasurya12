@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 250" width="100%" height="250">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap');
+      
+      .bg { fill: #0B0B12; stroke: rgba(255,255,255,0.08); stroke-width: 1; rx: 16; }
+      
+      .title { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; fill: #ffffff; letter-spacing: 1px; }
+      .subtitle { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; fill: #10B981; letter-spacing: 2px; }
+      .desc { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; fill: #9ca3af; line-height: 1.5; }
+      
+      .view-btn { fill: none; stroke: rgba(255,255,255,0.2); stroke-width: 1; rx: 12; }
+      .view-text { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; fill: #ffffff; letter-spacing: 1px; }
+
+      .sensor-line { fill: none; stroke: rgba(16, 185, 129, 0.3); stroke-width: 1; stroke-dasharray: 4, 4; }
+      .data-point { fill: #10B981; }
+      
+      @keyframes scan {
+        0% { transform: translateX(-20px); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateX(80px); opacity: 0; }
+      }
+      .anim-scan { animation: scan 3s linear infinite; }
+    </style>
+    
+    <clipPath id="card-clip">
+      <rect width="390" height="250" rx="16" />
+    </clipPath>
+  </defs>
+
+  <rect width="390" height="250" fill="#050507" />
+  
+  <g clip-path="url(#card-clip)">
+    <rect width="388" height="248" x="1" y="1" class="bg" />
+    
+    <!-- Abstract Visual: Connected Field System -->
+    <g transform="translate(280, 70)">
+      <!-- Field grid perspective -->
+      <path d="M-10,30 L60,30 M-20,45 L70,45 M-35,60 L85,60" class="sensor-line" />
+      <path d="M25,10 L-20,70 M25,10 L25,70 M25,10 L70,70" class="sensor-line" />
+      
+      <circle cx="25" cy="10" r="3" class="data-point" />
+      <circle cx="-10" cy="30" r="2" class="data-point" opacity="0.6" />
+      <circle cx="60" cy="30" r="2" class="data-point" opacity="0.6" />
+      
+      <!-- Scanning line -->
+      <line x1="0" y1="5" x2="0" y2="75" stroke="#10B981" stroke-width="2" class="anim-scan">
+        <linearGradient id="scan-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#10B981" stop-opacity="0" />
+          <stop offset="50%" stop-color="#10B981" stop-opacity="0.8" />
+          <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
+        </linearGradient>
+      </line>
+    </g>
+
+    <!-- Content -->
+    <g transform="translate(30, 40)">
+      <text x="0" y="0" class="subtitle">AI + IOT + REAL-WORLD SYSTEMS</text>
+      <text x="0" y="35" class="title">KRUSHIT</text>
+      
+      <text x="0" y="70" class="desc">Crop intelligence and disease</text>
+      <text x="0" y="90" class="desc">detection powered by real-time</text>
+      <text x="0" y="110" class="desc">monitoring algorithms.</text>
+      
+      <!-- Tech Pills (Compact) -->
+      <g transform="translate(0, 140)">
+        <text x="0" y="0" font-family="monospace" font-size="10" fill="#10B981">#IOT-SENSORS &nbsp;#TENSORFLOW &nbsp;#FASTAPI</text>
+      </g>
+      
+      <!-- CTA -->
+      <g transform="translate(0, 165)">
+        <rect x="0" y="0" width="120" height="30" class="view-btn" />
+        <text x="60" y="19" class="view-text" text-anchor="middle">VIEW PROJECT</text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="100%" height="280">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap');
+      
+      .bg { fill: #0B0B12; stroke: rgba(255,255,255,0.08); stroke-width: 1; rx: 16; }
+      
+      .title { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; fill: #ffffff; letter-spacing: 2px; }
+      .subtitle { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; fill: #8B5CF6; letter-spacing: 3px; }
+      .desc { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; fill: #9ca3af; line-height: 1.5; }
+      
+      .tech-pill { fill: rgba(255,255,255,0.03); stroke: rgba(255,255,255,0.1); stroke-width: 1; rx: 12; }
+      .tech-text { font-family: monospace; font-size: 11px; fill: #d1d5db; letter-spacing: 1px; }
+      
+      .view-btn { fill: none; stroke: rgba(255,255,255,0.2); stroke-width: 1; rx: 16; }
+      .view-text { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; fill: #ffffff; letter-spacing: 2px; }
+      
+      .network-line { stroke: rgba(139, 92, 246, 0.2); stroke-width: 1; fill: none; }
+      .network-node { fill: #8B5CF6; }
+      .network-glow { fill: url(#glow); opacity: 0.3; }
+    </style>
+
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="1" />
+      <stop offset="100%" stop-color="#050507" stop-opacity="0" />
+    </radialGradient>
+    
+    <clipPath id="card-clip">
+      <rect width="800" height="280" rx="16" />
+    </clipPath>
+  </defs>
+
+  <rect width="800" height="280" fill="#050507" />
+  
+  <g clip-path="url(#card-clip)">
+    <rect width="798" height="278" x="1" y="1" class="bg" />
+    
+    <!-- Abstract Visual: Learning Intelligence Network -->
+    <g transform="translate(500, 40)">
+      <circle cx="150" cy="100" r="150" class="network-glow" />
+      
+      <!-- Network Paths -->
+      <path class="network-line" d="M50,50 L120,80 L200,60 L250,150 L150,180 L80,140 Z" />
+      <path class="network-line" d="M120,80 L150,180 M200,60 L80,140" />
+      
+      <!-- Nodes -->
+      <circle cx="50" cy="50" r="3" class="network-node" />
+      <circle cx="120" cy="80" r="5" class="network-node" />
+      <circle cx="200" cy="60" r="2" class="network-node" />
+      <circle cx="250" cy="150" r="4" class="network-node" />
+      <circle cx="150" cy="180" r="6" class="network-node" />
+      <circle cx="80" cy="140" r="3" class="network-node" />
+      
+      <!-- Moving Data Packet -->
+      <circle cx="50" cy="50" r="2" fill="#fff">
+        <animateMotion path="M50,50 L120,80 L200,60 L250,150 L150,180 L80,140 Z" dur="10s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <!-- Content -->
+    <g transform="translate(40, 50)">
+      <text x="0" y="0" class="subtitle">AI-FIRST EDUCATIONAL OS</text>
+      <text x="0" y="40" class="title">ZYNC</text>
+      
+      <text x="0" y="75" class="desc">A multimodal, adaptive learning ecosystem powering</text>
+      <text x="0" y="100" class="desc">intelligent tutoring and seamless campus administration.</text>
+      
+      <!-- Tech Stack Pilled -->
+      <g transform="translate(0, 130)">
+        <rect x="0" y="0" width="75" height="24" class="tech-pill" />
+        <text x="37.5" y="16" class="tech-text" text-anchor="middle">GEMINI</text>
+        
+        <rect x="85" y="0" width="90" height="24" class="tech-pill" />
+        <text x="130" y="16" class="tech-text" text-anchor="middle">SUPABASE</text>
+        
+        <rect x="185" y="0" width="70" height="24" class="tech-pill" />
+        <text x="220" y="16" class="tech-text" text-anchor="middle">REACT</text>
+        
+        <rect x="265" y="0" width="105" height="24" class="tech-pill" />
+        <text x="317.5" y="16" class="tech-text" text-anchor="middle">TYPESCRIPT</text>
+      </g>
+      
+      <!-- CTA -->
+      <g transform="translate(0, 185)">
+        <rect x="0" y="0" width="160" height="36" class="view-btn" />
+        <text x="80" y="22" class="view-text" text-anchor="middle">VIEW PROJECT &#8594;</text>
+      </g>
+    </g>
+  </g>
+</svg>
