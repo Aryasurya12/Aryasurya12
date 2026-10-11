@@ -1,94 +1,270 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="100%" height="300">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 340" width="100%" height="340">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&amp;display=swap');
-      .name { font-family: 'Space Grotesk', sans-serif; font-size: 56px; font-weight: 700; fill: #ffffff; letter-spacing: 4px; }
-      .tagline { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 400; fill: #a1a1aa; letter-spacing: 2px; }
-      .subtag { font-family: monospace; font-size: 12px; fill: #8B5CF6; letter-spacing: 3px; }
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
+
+      .bg-base { fill: #070711; }
+      .bg-card { fill: #0D0D1B; stroke: rgba(167, 139, 250, 0.2); stroke-width: 1.5; rx: 12; }
       
-      .node { fill: rgba(255,255,255,0.15); }
-      .node-core { fill: #8B5CF6; }
-      .path { stroke: rgba(255,255,255,0.06); stroke-width: 1; fill: none; }
-      .pulse-path { stroke: url(#gradient-accent); stroke-width: 1.5; fill: none; stroke-dasharray: 10, 200; stroke-dashoffset: 0; }
+      /* Grid styling */
+      .pixel-grid { stroke: rgba(139, 92, 246, 0.07); stroke-width: 1; }
+      .pixel-dot { fill: rgba(34, 211, 238, 0.35); }
       
-      @keyframes travel {
-        0% { stroke-dashoffset: 210; opacity: 0; }
-        20% { opacity: 1; }
-        80% { opacity: 1; }
-        100% { stroke-dashoffset: -210; opacity: 0; }
+      /* Typography */
+      .os-title { font-family: 'Press Start 2P', monospace; font-size: 26px; fill: #F4F4F8; letter-spacing: 2px; }
+      .os-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; fill: #22D3EE; letter-spacing: 2.5px; }
+      .os-desc { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 500; fill: #A1A1AA; }
+      .os-status { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; fill: #34D399; letter-spacing: 1.5px; }
+      .os-badge { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #A78BFA; }
+      
+      /* Pixel art character animations */
+      @keyframes floatBot {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-7px); }
       }
-      .anim-pulse { animation: travel 8s linear infinite; }
-      .anim-pulse-delayed { animation: travel 12s linear infinite 4s; }
-      
-      @keyframes float {
-        0%, 100% { transform: translateY(0px) translateX(0px); }
-        50% { transform: translateY(-10px) translateX(5px); }
+      .anim-bot { animation: floatBot 4s ease-in-out infinite; }
+
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.25; transform: scale(1); }
+        50% { opacity: 0.55; transform: scale(1.08); }
       }
-      .floating { animation: float 15s ease-in-out infinite; transform-origin: center; }
-      .floating-slow { animation: float 25s ease-in-out infinite reverse; transform-origin: center; }
+      .anim-glow { animation: pulseGlow 5s ease-in-out infinite; transform-origin: 730px 170px; }
+
+      @keyframes blinkCursor {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      .anim-cursor { animation: blinkCursor 1s step-end infinite; }
+
+      @keyframes scanBeam {
+        0% { transform: translateY(0px); opacity: 0; }
+        20% { opacity: 0.6; }
+        80% { opacity: 0.6; }
+        100% { transform: translateY(320px); opacity: 0; }
+      }
+      .anim-scanline { animation: scanBeam 6s linear infinite; }
+
+      @keyframes particleFloat1 {
+        0% { transform: translateY(0px) translateX(0px); opacity: 0; }
+        25% { opacity: 0.8; }
+        75% { opacity: 0.8; }
+        100% { transform: translateY(-40px) translateX(25px); opacity: 0; }
+      }
+      .anim-p1 { animation: particleFloat1 5s ease-in-out infinite; }
+
+      @keyframes particleFloat2 {
+        0% { transform: translateY(0px) translateX(0px); opacity: 0; }
+        25% { opacity: 0.7; }
+        75% { opacity: 0.7; }
+        100% { transform: translateY(-35px) translateX(-20px); opacity: 0; }
+      }
+      .anim-p2 { animation: particleFloat2 7s ease-in-out infinite 2s; }
+      
+      .status-pill { fill: rgba(52, 211, 153, 0.1); stroke: #34D399; stroke-width: 1; rx: 12; }
+      .badge-pill { fill: rgba(167, 139, 250, 0.1); stroke: rgba(167, 139, 250, 0.25); stroke-width: 1; rx: 6; }
     </style>
 
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.15" />
-      <stop offset="100%" stop-color="#050507" stop-opacity="0" />
+    <radialGradient id="hero-radial" cx="75%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#22D3EE" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#070711" stop-opacity="0" />
     </radialGradient>
-    
-    <linearGradient id="gradient-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+
+    <linearGradient id="cyber-line" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#8B5CF6" />
-      <stop offset="50%" stop-color="#6366F1" />
-      <stop offset="100%" stop-color="#06B6D4" />
+      <stop offset="50%" stop-color="#22D3EE" />
+      <stop offset="100%" stop-color="#34D399" />
     </linearGradient>
-    
-    <filter id="blur-filter">
-      <feGaussianBlur stdDeviation="3" />
-    </filter>
+
+    <clipPath id="hero-clip">
+      <rect x="0" y="0" width="880" height="340" rx="14" />
+    </clipPath>
   </defs>
 
-  <rect width="800" height="300" fill="#050507" />
-  
-  <rect width="800" height="300" fill="url(#glow)" />
-
-  <g class="floating">
-    <!-- Neural Network Background -->
-    <path class="path" d="M100,50 L250,120 L350,60 L500,90 L700,40 M250,120 L200,200 L400,250 L550,180 L700,40 M350,60 L550,180" />
-    <path class="path" d="M50,180 L180,260 L400,250 M500,90 L600,120 L750,220 M200,200 L300,150 L400,250" />
-    <path class="path" d="M120,80 L300,150 L500,90 M600,120 L650,260 L750,220 M180,260 L300,150 M550,180 L650,260" />
-
-    <!-- Animated Pulses -->
-    <path class="pulse-path anim-pulse" d="M100,50 L250,120 L350,60 L500,90 L700,40" />
-    <path class="pulse-path anim-pulse-delayed" d="M50,180 L180,260 L400,250 L550,180 L700,40" />
-    <path class="pulse-path anim-pulse" d="M120,80 L300,150 L600,120 L750,220" style="animation-duration: 10s;" />
-
-    <!-- Nodes -->
-    <circle cx="100" cy="50" r="2" class="node" />
-    <circle cx="250" cy="120" r="3" class="node" />
-    <circle cx="350" cy="60" r="2" class="node" />
-    <circle cx="500" cy="90" r="3" class="node" />
-    <circle cx="700" cy="40" r="2" class="node" />
+  <!-- Background Base -->
+  <g clip-path="url(#hero-clip)">
+    <rect width="880" height="340" class="bg-base" />
     
-    <circle cx="200" cy="200" r="2" class="node" />
-    <circle cx="400" cy="250" r="4" class="node-core" />
-    <circle cx="550" cy="180" r="3" class="node" />
-    
-    <circle cx="50" cy="180" r="2" class="node" />
-    <circle cx="180" cy="260" r="3" class="node" />
-    <circle cx="600" cy="120" r="2" class="node" />
-    <circle cx="750" cy="220" r="3" class="node" />
-    
-    <circle cx="120" cy="80" r="2" class="node" />
-    <circle cx="300" cy="150" r="4" class="node-core" />
-    <circle cx="650" cy="260" r="2" class="node" />
-    
-    <!-- Particles -->
-    <circle cx="150" cy="150" r="1" fill="#fff" opacity="0.5"><animate attributeName="opacity" values="0.1;0.8;0.1" dur="3s" repeatCount="indefinite"/></circle>
-    <circle cx="650" cy="80" r="1" fill="#fff" opacity="0.3"><animate attributeName="opacity" values="0.1;0.6;0.1" dur="5s" repeatCount="indefinite"/></circle>
-    <circle cx="450" cy="220" r="1.5" fill="#06B6D4" opacity="0.6"><animate attributeName="opacity" values="0.2;1;0.2" dur="4s" repeatCount="indefinite"/></circle>
-  </g>
+    <!-- Ambient Radial Glow -->
+    <rect width="880" height="340" fill="url(#hero-radial)" />
 
-  <!-- Foreground Text -->
-  <g text-anchor="middle">
-    <text x="400" y="145" class="name">ARYA SURYAVANSHI</text>
-    <text x="400" y="180" class="tagline">BUILDING DIGITAL WORLDS</text>
-    <text x="400" y="215" class="subtag">SOFTWARE &#215; AI &#215; SYSTEMS</text>
+    <!-- Isometric Retro Pixel Grid -->
+    <g class="pixel-grid">
+      <!-- Horizontal gridlines -->
+      <line x1="0" y1="40" x2="880" y2="40" />
+      <line x1="0" y1="80" x2="880" y2="80" />
+      <line x1="0" y1="120" x2="880" y2="120" />
+      <line x1="0" y1="160" x2="880" y2="160" />
+      <line x1="0" y1="200" x2="880" y2="200" />
+      <line x1="0" y1="240" x2="880" y2="240" />
+      <line x1="0" y1="280" x2="880" y2="280" />
+      <line x1="0" y1="320" x2="880" y2="320" />
+      
+      <!-- Vertical gridlines -->
+      <line x1="60" y1="0" x2="60" y2="340" />
+      <line x1="120" y1="0" x2="120" y2="340" />
+      <line x1="180" y1="0" x2="180" y2="340" />
+      <line x1="240" y1="0" x2="240" y2="340" />
+      <line x1="300" y1="0" x2="300" y2="340" />
+      <line x1="360" y1="0" x2="360" y2="340" />
+      <line x1="420" y1="0" x2="420" y2="340" />
+      <line x1="480" y1="0" x2="480" y2="340" />
+      <line x1="540" y1="0" x2="540" y2="340" />
+      <line x1="600" y1="0" x2="600" y2="340" />
+      <line x1="660" y1="0" x2="660" y2="340" />
+      <line x1="720" y1="0" x2="720" y2="340" />
+      <line x1="780" y1="0" x2="780" y2="340" />
+      <line x1="840" y1="0" x2="840" y2="340" />
+    </g>
+
+    <!-- Retro Corner Brackets -->
+    <path d="M 16 36 L 16 16 L 36 16" fill="none" stroke="#22D3EE" stroke-width="2" />
+    <path d="M 864 36 L 864 16 L 844 16" fill="none" stroke="#22D3EE" stroke-width="2" />
+    <path d="M 16 304 L 16 324 L 36 324" fill="none" stroke="#8B5CF6" stroke-width="2" />
+    <path d="M 864 304 L 864 324 L 844 324" fill="none" stroke="#8B5CF6" stroke-width="2" />
+
+    <!-- Drifting Pixel Stars/Particles -->
+    <g class="anim-p1">
+      <rect x="620" y="90" width="4" height="4" fill="#22D3EE" />
+      <rect x="800" y="70" width="3" height="3" fill="#A78BFA" />
+      <rect x="670" y="240" width="3" height="3" fill="#34D399" />
+      <rect x="150" y="80" width="3" height="3" fill="#22D3EE" />
+    </g>
+    <g class="anim-p2">
+      <rect x="750" y="120" width="4" height="4" fill="#A78BFA" />
+      <rect x="610" y="200" width="3" height="3" fill="#22D3EE" />
+      <rect x="830" y="220" width="3" height="3" fill="#34D399" />
+    </g>
+
+    <!-- Scanline effect -->
+    <line x1="0" y1="0" x2="880" y2="0" stroke="rgba(34, 211, 238, 0.25)" stroke-width="2" class="anim-scanline" />
+
+    <!-- TOP BAR / HUD HEADER -->
+    <g transform="translate(40, 36)">
+      <!-- System status indicator -->
+      <rect x="0" y="0" width="168" height="24" class="status-pill" />
+      <circle cx="14" cy="12" r="4" fill="#34D399" />
+      <circle cx="14" cy="12" r="7" fill="none" stroke="#34D399" stroke-width="1" opacity="0.6" />
+      <text x="26" y="16" class="os-status">SYSTEM // ONLINE</text>
+
+      <!-- Terminal Session info -->
+      <text x="200" y="16" class="os-tag">SESSION: ARYA.OS // v2.6.4</text>
+      <text x="560" y="16" class="os-badge" opacity="0.8">LOC: 19.0760&#176; N, 72.8777&#176; E [IN]</text>
+    </g>
+
+    <!-- MAIN HERO CONTENT (LEFT SIDE) -->
+    <g transform="translate(40, 100)">
+      <!-- Sub-label / Classification -->
+      <text x="0" y="0" class="os-tag">&#9654; ELECTRONICS &amp; COMPUTER SCIENCE ENGINEER</text>
+
+      <!-- Main Title -->
+      <text x="0" y="38" class="os-title">ARYA SURYAVANSHI</text>
+
+      <!-- Rainbow Accent Bar -->
+      <rect x="0" y="54" width="460" height="3" fill="url(#cyber-line)" rx="1.5" />
+
+      <!-- Mission Statement -->
+      <text x="0" y="85" class="os-desc">Engineering intelligent systems. Building digital experiences.</text>
+      <text x="0" y="108" class="os-desc" fill="#71717A">Bridging neuro-symbolic algorithms, edge avionics AI &amp; interactive web.</text>
+
+      <!-- Terminal CLI Prompt simulation -->
+      <g transform="translate(0, 134)">
+        <rect x="0" y="0" width="460" height="32" fill="#0D0D1B" stroke="rgba(167, 139, 250, 0.25)" stroke-width="1" rx="6" />
+        <text x="12" y="20" font-family="'JetBrains Mono', monospace" font-size="12" fill="#34D399">&#10095;</text>
+        <text x="28" y="20" font-family="'JetBrains Mono', monospace" font-size="11" fill="#F4F4F8">kernel.boot: neural-solver + edge-cv + 3d-graphics</text>
+        <rect x="424" y="9" width="7" height="14" fill="#22D3EE" class="anim-cursor" />
+      </g>
+
+      <!-- Domain Badges -->
+      <g transform="translate(0, 180)">
+        <g transform="translate(0, 0)">
+          <rect width="105" height="22" class="badge-pill" />
+          <text x="52" y="15" class="os-badge" text-anchor="middle">&#10022; NEURAL-AI</text>
+        </g>
+        <g transform="translate(113, 0)">
+          <rect width="105" height="22" class="badge-pill" />
+          <text x="52" y="15" class="os-badge" text-anchor="middle">&#9881; EDGE-AVIONICS</text>
+        </g>
+        <g transform="translate(226, 0)">
+          <rect width="115" height="22" class="badge-pill" />
+          <text x="57" y="15" class="os-badge" text-anchor="middle">&#9670; DNA-ALGORITHMS</text>
+        </g>
+        <g transform="translate(349, 0)">
+          <rect width="110" height="22" class="badge-pill" />
+          <text x="55" y="15" class="os-badge" text-anchor="middle">&#9733; CREATIVE-WEB</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- RIGHT SIDE: RETRO PIXEL-ART BOT & WORKSTATION RIG -->
+    <g transform="translate(560, 48)">
+      <!-- Ambient Glow behind workstation -->
+      <circle cx="160" cy="130" r="100" fill="#8B5CF6" class="anim-glow" />
+
+      <!-- Floating Terminal & Character Group -->
+      <g class="anim-bot">
+        <!-- Workstation Hologram Stand -->
+        <rect x="70" y="235" width="180" height="6" fill="#1E1E38" rx="2" />
+        <rect x="140" y="200" width="40" height="35" fill="#13132B" stroke="rgba(167, 139, 250, 0.4)" stroke-width="1" />
+        
+        <!-- CRT Monitor Body -->
+        <rect x="60" y="70" width="200" height="135" fill="#0D0D1F" stroke="#8B5CF6" stroke-width="2" rx="10" />
+        <rect x="70" y="80" width="180" height="115" fill="#04040A" stroke="rgba(34, 211, 238, 0.3)" stroke-width="1" rx="6" />
+
+        <!-- CRT Screen Glare & Scanlines -->
+        <line x1="72" y1="95" x2="248" y2="95" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1" />
+        <line x1="72" y1="115" x2="248" y2="115" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1" />
+        <line x1="72" y1="135" x2="248" y2="135" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1" />
+        <line x1="72" y1="155" x2="248" y2="155" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1" />
+
+        <!-- Pixel Art Character (Inside the Matrix Screen) -->
+        <!-- Antenna -->
+        <rect x="156" y="90" width="8" height="6" fill="#22D3EE" />
+        <rect x="158" y="84" width="4" height="6" fill="#22D3EE" />
+        <rect x="157" y="80" width="6" height="4" fill="#34D399" />
+        
+        <!-- Bot Head Frame -->
+        <rect x="135" y="96" width="50" height="40" fill="#1C1838" stroke="#A78BFA" stroke-width="1.5" rx="4" />
+        
+        <!-- Pixel Visor (Cyan Glow) -->
+        <rect x="142" y="106" width="36" height="14" fill="#0E2E38" stroke="#22D3EE" stroke-width="1" rx="2" />
+        <!-- Pixel Eyes (Blinking/Glowing green) -->
+        <rect x="148" y="110" width="8" height="6" fill="#34D399" />
+        <rect x="164" y="110" width="8" height="6" fill="#34D399" />
+        
+        <!-- Bot Body (Cyber Chassis) -->
+        <rect x="140" y="140" width="40" height="30" fill="#181830" stroke="#8B5CF6" stroke-width="1.5" rx="3" />
+        <!-- Core Reactor (Pixel Heart) -->
+        <rect x="156" y="148" width="8" height="8" fill="#22D3EE" />
+        <rect x="158" y="150" width="4" height="4" fill="#FFFFFF" />
+
+        <!-- Pixel Hands typing on virtual keys -->
+        <rect x="128" y="152" width="10" height="6" fill="#A78BFA" />
+        <rect x="182" y="152" width="10" height="6" fill="#A78BFA" />
+
+        <!-- Terminal lines on screen -->
+        <text x="78" y="186" font-family="'JetBrains Mono', monospace" font-size="9" fill="#22D3EE">READY&gt; EXEC ARYA.OS</text>
+
+        <!-- Floating Data Nodes / Constellations around monitor -->
+        <!-- Node 1 -->
+        <circle cx="40" cy="110" r="4" fill="#8B5CF6" />
+        <line x1="40" y1="110" x2="60" y2="120" stroke="rgba(139, 92, 246, 0.4)" stroke-width="1" stroke-dasharray="2,2" />
+        
+        <!-- Node 2 -->
+        <circle cx="275" cy="95" r="4" fill="#22D3EE" />
+        <line x1="260" y1="105" x2="275" y2="95" stroke="rgba(34, 211, 238, 0.4)" stroke-width="1" stroke-dasharray="2,2" />
+
+        <!-- Node 3 -->
+        <circle cx="280" cy="180" r="3" fill="#34D399" />
+        <line x1="260" y1="170" x2="280" y2="180" stroke="rgba(52, 211, 153, 0.4)" stroke-width="1" stroke-dasharray="2,2" />
+
+        <!-- Decorative Floppy Disk Slot & LED -->
+        <rect x="80" y="212" width="30" height="4" fill="#06060F" rx="1" />
+        <circle cx="230" cy="214" r="3" fill="#34D399" />
+      </g>
+    </g>
+
+    <!-- Border highlight -->
+    <rect x="1" y="1" width="878" height="338" fill="none" stroke="rgba(167, 139, 250, 0.25)" stroke-width="1.5" rx="13" />
   </g>
 </svg>

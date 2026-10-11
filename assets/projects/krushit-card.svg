@@ -1,77 +1,94 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 250" width="100%" height="250">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 425 260" width="100%" height="260">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap');
-      
-      .bg { fill: #0B0B12; stroke: rgba(255,255,255,0.08); stroke-width: 1; rx: 16; }
-      
-      .title { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; fill: #ffffff; letter-spacing: 1px; }
-      .subtitle { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; fill: #10B981; letter-spacing: 2px; }
-      .desc { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; fill: #9ca3af; line-height: 1.5; }
-      
-      .view-btn { fill: none; stroke: rgba(255,255,255,0.2); stroke-width: 1; rx: 12; }
-      .view-text { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; fill: #ffffff; letter-spacing: 1px; }
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
 
-      .sensor-line { fill: none; stroke: rgba(16, 185, 129, 0.3); stroke-width: 1; stroke-dasharray: 4, 4; }
-      .data-point { fill: #10B981; }
-      
-      @keyframes scan {
-        0% { transform: translateX(-20px); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateX(80px); opacity: 0; }
+      .bg-base { fill: #070711; }
+      .bg-card { fill: #0D0D1B; stroke: rgba(52, 211, 153, 0.22); stroke-width: 1.5; rx: 12; }
+
+      .card-tag { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 600; fill: #34D399; letter-spacing: 2px; }
+      .card-title { font-family: 'Press Start 2P', monospace; font-size: 13px; fill: #F4F4F8; letter-spacing: 0.5px; }
+      .card-desc { font-family: 'Space Grotesk', sans-serif; font-size: 12px; fill: #A1A1AA; line-height: 1.4; }
+      .card-chip { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #34D399; }
+
+      .btn-box { fill: rgba(52, 211, 153, 0.12); stroke: #34D399; stroke-width: 1; rx: 5; }
+      .btn-txt { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 600; fill: #F4F4F8; letter-spacing: 1px; }
+
+      @keyframes cropScan {
+        0% { transform: translateY(0px); opacity: 0.8; }
+        50% { transform: translateY(20px); opacity: 0.2; }
+        100% { transform: translateY(0px); opacity: 0.8; }
       }
-      .anim-scan { animation: scan 3s linear infinite; }
+      .anim-crop { animation: cropScan 3s ease-in-out infinite; }
+
+      .chip-bg { fill: rgba(52, 211, 153, 0.08); stroke: rgba(52, 211, 153, 0.25); stroke-width: 1; rx: 3; }
     </style>
-    
-    <clipPath id="card-clip">
-      <rect width="390" height="250" rx="16" />
+
+    <radialGradient id="kr-glow" cx="85%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#34D399" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#070711" stop-opacity="0" />
+    </radialGradient>
+
+    <clipPath id="kr-clip">
+      <rect width="425" height="260" rx="12" />
     </clipPath>
   </defs>
 
-  <rect width="390" height="250" fill="#050507" />
-  
-  <g clip-path="url(#card-clip)">
-    <rect width="388" height="248" x="1" y="1" class="bg" />
-    
-    <!-- Abstract Visual: Connected Field System -->
-    <g transform="translate(280, 70)">
-      <!-- Field grid perspective -->
-      <path d="M-10,30 L60,30 M-20,45 L70,45 M-35,60 L85,60" class="sensor-line" />
-      <path d="M25,10 L-20,70 M25,10 L25,70 M25,10 L70,70" class="sensor-line" />
-      
-      <circle cx="25" cy="10" r="3" class="data-point" />
-      <circle cx="-10" cy="30" r="2" class="data-point" opacity="0.6" />
-      <circle cx="60" cy="30" r="2" class="data-point" opacity="0.6" />
-      
+  <g clip-path="url(#kr-clip)">
+    <rect width="425" height="260" class="bg-base" />
+    <rect width="425" height="260" fill="url(#kr-glow)" />
+    <rect x="6" y="6" width="413" height="248" class="bg-card" />
+    <rect x="6" y="6" width="4" height="248" fill="#34D399" />
+
+    <!-- Top IoT sensor motif -->
+    <g transform="translate(350, 36)">
+      <!-- Plant leaf pixel art -->
+      <path d="M12,0 C20,0 24,10 24,18 C16,18 12,12 12,0 Z" fill="#34D399" opacity="0.6" />
+      <path d="M12,0 C4,0 0,10 0,18 C8,18 12,12 12,0 Z" fill="#22D3EE" opacity="0.6" />
       <!-- Scanning line -->
-      <line x1="0" y1="5" x2="0" y2="75" stroke="#10B981" stroke-width="2" class="anim-scan">
-        <linearGradient id="scan-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#10B981" stop-opacity="0" />
-          <stop offset="50%" stop-color="#10B981" stop-opacity="0.8" />
-          <stop offset="100%" stop-color="#10B981" stop-opacity="0" />
-        </linearGradient>
-      </line>
+      <line x1="-5" y1="2" x2="29" y2="2" stroke="#34D399" stroke-width="1.5" class="anim-crop" />
     </g>
 
-    <!-- Content -->
-    <g transform="translate(30, 40)">
-      <text x="0" y="0" class="subtitle">AI + IOT + REAL-WORLD SYSTEMS</text>
-      <text x="0" y="35" class="title">KRUSHIT</text>
+    <!-- CONTENT -->
+    <g transform="translate(26, 28)">
+      <text x="0" y="0" class="card-tag">&#9670; AGRI-TECH // COMPUTER VISION + IOT</text>
+      <text x="0" y="24" class="card-title">KRUSHIT</text>
       
-      <text x="0" y="70" class="desc">Crop intelligence and disease</text>
-      <text x="0" y="90" class="desc">detection powered by real-time</text>
-      <text x="0" y="110" class="desc">monitoring algorithms.</text>
-      
-      <!-- Tech Pills (Compact) -->
-      <g transform="translate(0, 140)">
-        <text x="0" y="0" font-family="monospace" font-size="10" fill="#10B981">#IOT-SENSORS &#160;#TENSORFLOW &#160;#FASTAPI</text>
+      <text x="0" y="52" class="card-desc">Modern smart platform empowering farmers</text>
+      <text x="0" y="68" class="card-desc">with Computer Vision crop disease detection,</text>
+      <text x="0" y="84" class="card-desc">IoT field telemetry monitoring, and GenAI</text>
+      <text x="0" y="100" class="card-desc">actionable agricultural insights in vernacular.</text>
+
+      <!-- Tech chips -->
+      <g transform="translate(0, 126)">
+        <g transform="translate(0, 0)">
+          <rect width="76" height="20" class="chip-bg" />
+          <text x="38" y="14" class="card-chip" text-anchor="middle">Vision AI</text>
+        </g>
+        <g transform="translate(82, 0)">
+          <rect width="66" height="20" class="chip-bg" />
+          <text x="33" y="14" class="card-chip" text-anchor="middle">IoT</text>
+        </g>
+        <g transform="translate(154, 0)">
+          <rect width="80" height="20" class="chip-bg" />
+          <text x="40" y="14" class="card-chip" text-anchor="middle">TypeScript</text>
+        </g>
+        <g transform="translate(240, 0)">
+          <rect width="70" height="20" class="chip-bg" />
+          <text x="35" y="14" class="card-chip" text-anchor="middle">GenAI</text>
+        </g>
       </g>
-      
-      <!-- CTA -->
-      <g transform="translate(0, 165)">
-        <rect x="0" y="0" width="120" height="30" class="view-btn" />
-        <text x="60" y="19" class="view-text" text-anchor="middle">VIEW PROJECT</text>
+
+      <!-- Status detail -->
+      <text x="0" y="172" font-family="'JetBrains Mono', monospace" font-size="9" fill="#71717A">&#9654; Localized multilingual advisory engine</text>
+
+      <!-- Action Button -->
+      <g transform="translate(0, 192)">
+        <rect width="160" height="26" class="btn-box" />
+        <text x="80" y="17" class="btn-txt" text-anchor="middle">VIEW PLATFORM &#8594;</text>
       </g>
     </g>
+
+    <rect x="1" y="1" width="423" height="258" fill="none" stroke="rgba(52, 211, 153, 0.25)" stroke-width="1.5" rx="11" />
   </g>
 </svg>

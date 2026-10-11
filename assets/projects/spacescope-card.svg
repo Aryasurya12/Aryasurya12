@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 425 260" width="100%" height="260">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
+
+      .bg-base { fill: #070711; }
+      .bg-card { fill: #0D0D1B; stroke: rgba(34, 211, 238, 0.22); stroke-width: 1.5; rx: 12; }
+
+      .card-tag { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 600; fill: #22D3EE; letter-spacing: 2px; }
+      .card-title { font-family: 'Press Start 2P', monospace; font-size: 13px; fill: #F4F4F8; letter-spacing: 0.5px; }
+      .card-desc { font-family: 'Space Grotesk', sans-serif; font-size: 12px; fill: #A1A1AA; line-height: 1.4; }
+      .card-chip { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #22D3EE; }
+
+      .btn-box { fill: rgba(34, 211, 238, 0.12); stroke: #22D3EE; stroke-width: 1; rx: 5; }
+      .btn-txt { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 600; fill: #F4F4F8; letter-spacing: 1px; }
+
+      @keyframes satOrbit {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .anim-sat { animation: satOrbit 8s linear infinite; transform-origin: 360px 48px; }
+
+      .chip-bg { fill: rgba(34, 211, 238, 0.08); stroke: rgba(34, 211, 238, 0.25); stroke-width: 1; rx: 3; }
+    </style>
+
+    <radialGradient id="ss-glow" cx="85%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#070711" stop-opacity="0" />
+    </radialGradient>
+
+    <clipPath id="ss-clip">
+      <rect width="425" height="260" rx="12" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#ss-clip)">
+    <rect width="425" height="260" class="bg-base" />
+    <rect width="425" height="260" fill="url(#ss-glow)" />
+    <rect x="6" y="6" width="413" height="248" class="bg-card" />
+    <rect x="6" y="6" width="4" height="248" fill="#22D3EE" />
+
+    <!-- Satellite Orbit Motif -->
+    <g class="anim-sat">
+      <circle cx="360" cy="48" r="18" fill="none" stroke="rgba(34, 211, 238, 0.3)" stroke-width="1.5" stroke-dasharray="3,3" />
+      <rect x="357" y="28" width="6" height="4" fill="#22D3EE" />
+    </g>
+
+    <!-- CONTENT -->
+    <g transform="translate(26, 28)">
+      <text x="0" y="0" class="card-tag">&#9670; NASA/ESA DATA // EXPLORATION</text>
+      <text x="0" y="24" class="card-title">SPACESCOPE</text>
+      
+      <text x="0" y="52" class="card-desc">Futuristic interactive astronomy</text>
+      <text x="0" y="68" class="card-desc">dashboard transforming raw NASA &amp; ESA</text>
+      <text x="0" y="84" class="card-desc">datasets into real-time tracking for NEOs,</text>
+      <text x="0" y="100" class="card-desc">Mars Rover telemetry, &amp; the Solar System.</text>
+
+      <!-- Tech chips -->
+      <g transform="translate(0, 126)">
+        <g transform="translate(0, 0)">
+          <rect width="80" height="20" class="chip-bg" />
+          <text x="40" y="14" class="card-chip" text-anchor="middle">NASA APIs</text>
+        </g>
+        <g transform="translate(86, 0)">
+          <rect width="80" height="20" class="chip-bg" />
+          <text x="40" y="14" class="card-chip" text-anchor="middle">TypeScript</text>
+        </g>
+        <g transform="translate(172, 0)">
+          <rect width="66" height="20" class="chip-bg" />
+          <text x="33" y="14" class="card-chip" text-anchor="middle">React</text>
+        </g>
+        <g transform="translate(244, 0)">
+          <rect width="66" height="20" class="chip-bg" />
+          <text x="33" y="14" class="card-chip" text-anchor="middle">Tailwind</text>
+        </g>
+      </g>
+
+      <!-- Status detail -->
+      <text x="0" y="172" font-family="'JetBrains Mono', monospace" font-size="9" fill="#71717A">&#9654; Near-Earth Object trajectory tracking</text>
+
+      <!-- Action Button -->
+      <g transform="translate(0, 192)">
+        <rect width="160" height="26" class="btn-box" />
+        <text x="80" y="17" class="btn-txt" text-anchor="middle">VIEW DASHBOARD &#8594;</text>
+      </g>
+    </g>
+
+    <rect x="1" y="1" width="423" height="258" fill="none" stroke="rgba(34, 211, 238, 0.25)" stroke-width="1.5" rx="11" />
+  </g>
+</svg>

@@ -1,64 +1,92 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 250" width="100%" height="250">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 425 260" width="100%" height="260">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Inter:wght@400;500;600&amp;display=swap');
-      
-      .bg { fill: #0B0B12; stroke: rgba(255,255,255,0.08); stroke-width: 1; rx: 16; }
-      
-      .title { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; fill: #ffffff; letter-spacing: 1px; }
-      .subtitle { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; fill: #06B6D4; letter-spacing: 2px; }
-      .desc { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; fill: #9ca3af; line-height: 1.5; }
-      
-      .view-btn { fill: none; stroke: rgba(255,255,255,0.2); stroke-width: 1; rx: 12; }
-      .view-text { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; fill: #ffffff; letter-spacing: 1px; }
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
 
-      .signal-ring { fill: none; stroke: #06B6D4; stroke-width: 1; opacity: 0; }
-      
-      @keyframes radar-ping {
-        0% { r: 10; opacity: 0.8; stroke-width: 2; }
-        100% { r: 80; opacity: 0; stroke-width: 0.5; }
+      .bg-base { fill: #070711; }
+      .bg-card { fill: #0D0D1B; stroke: rgba(34, 211, 238, 0.22); stroke-width: 1.5; rx: 12; }
+
+      .card-tag { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 600; fill: #22D3EE; letter-spacing: 2px; }
+      .card-title { font-family: 'Press Start 2P', monospace; font-size: 13px; fill: #F4F4F8; letter-spacing: 0.5px; }
+      .card-desc { font-family: 'Space Grotesk', sans-serif; font-size: 12px; fill: #A1A1AA; line-height: 1.4; }
+      .card-chip { font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #22D3EE; }
+
+      .btn-box { fill: rgba(34, 211, 238, 0.12); stroke: #22D3EE; stroke-width: 1; rx: 5; }
+      .btn-txt { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 600; fill: #F4F4F8; letter-spacing: 1px; }
+
+      @keyframes radarPing {
+        0% { r: 5; opacity: 0.9; stroke-width: 1.5; }
+        100% { r: 35; opacity: 0; stroke-width: 0.5; }
       }
-      .anim-ping { animation: radar-ping 4s ease-out infinite; }
-      .anim-ping-delayed { animation: radar-ping 4s ease-out infinite 2s; }
+      .anim-ping { animation: radarPing 3s ease-out infinite; }
+      .anim-ping-del { animation: radarPing 3s ease-out infinite 1.5s; }
+
+      .chip-bg { fill: rgba(34, 211, 238, 0.08); stroke: rgba(34, 211, 238, 0.25); stroke-width: 1; rx: 3; }
     </style>
-    
-    <clipPath id="card-clip">
-      <rect width="390" height="250" rx="16" />
+
+    <radialGradient id="ss-glow" cx="85%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#070711" stop-opacity="0" />
+    </radialGradient>
+
+    <clipPath id="ss-clip">
+      <rect width="425" height="260" rx="12" />
     </clipPath>
   </defs>
 
-  <rect width="390" height="250" fill="#050507" />
-  
-  <g clip-path="url(#card-clip)">
-    <rect width="388" height="248" x="1" y="1" class="bg" />
-    
-    <!-- Abstract Visual: Privacy/Signal Motif -->
-    <g transform="translate(300, 50)">
-      <circle cx="0" cy="0" r="10" fill="#06B6D4" opacity="0.2" />
-      <circle cx="0" cy="0" r="3" fill="#06B6D4" />
-      <circle cx="0" cy="0" class="signal-ring anim-ping" />
-      <circle cx="0" cy="0" class="signal-ring anim-ping-delayed" />
+  <g clip-path="url(#ss-clip)">
+    <rect width="425" height="260" class="bg-base" />
+    <rect width="425" height="260" fill="url(#ss-glow)" />
+    <rect x="6" y="6" width="413" height="248" class="bg-card" />
+    <rect x="6" y="6" width="4" height="248" fill="#22D3EE" />
+
+    <!-- Top Signal Radar Motif -->
+    <g transform="translate(360, 48)">
+      <circle cx="0" cy="0" r="4" fill="#22D3EE" />
+      <circle cx="0" cy="0" class="anim-ping" fill="none" stroke="#22D3EE" />
+      <circle cx="0" cy="0" class="anim-ping-del" fill="none" stroke="#22D3EE" />
     </g>
 
-    <!-- Content -->
-    <g transform="translate(30, 40)">
-      <text x="0" y="0" class="subtitle">SOCIAL IMPACT / SAFETY TECHNOLOGY</text>
-      <text x="0" y="35" class="title">SHE SPEAKS</text>
+    <!-- CONTENT -->
+    <g transform="translate(26, 28)">
+      <text x="0" y="0" class="card-tag">&#9670; SOCIAL IMPACT // CAMPUS SAFETY</text>
+      <text x="0" y="24" class="card-title">SHE SPEAKS</text>
       
-      <text x="0" y="70" class="desc">A secure, anonymous platform for</text>
-      <text x="0" y="90" class="desc">incident reporting and campus</text>
-      <text x="0" y="110" class="desc">safety management.</text>
-      
-      <!-- Tech Pills (Compact) -->
-      <g transform="translate(0, 140)">
-        <text x="0" y="0" font-family="monospace" font-size="10" fill="#6366F1">#ANONYMITY &#160;#SECURE-REPORTING</text>
+      <text x="0" y="52" class="card-desc">100% anonymous campus reporting</text>
+      <text x="0" y="68" class="card-desc">platform empowering women to report</text>
+      <text x="0" y="84" class="card-desc">harassment &amp; safety incidents with</text>
+      <text x="0" y="100" class="card-desc">real-time tracking &amp; privacy guardrails.</text>
+
+      <!-- Tech chips -->
+      <g transform="translate(0, 126)">
+        <g transform="translate(0, 0)">
+          <rect width="80" height="20" class="chip-bg" />
+          <text x="40" y="14" class="card-chip" text-anchor="middle">TypeScript</text>
+        </g>
+        <g transform="translate(86, 0)">
+          <rect width="70" height="20" class="chip-bg" />
+          <text x="35" y="14" class="card-chip" text-anchor="middle">Next.js</text>
+        </g>
+        <g transform="translate(162, 0)">
+          <rect width="76" height="20" class="chip-bg" />
+          <text x="38" y="14" class="card-chip" text-anchor="middle">Supabase</text>
+        </g>
+        <g transform="translate(244, 0)">
+          <rect width="70" height="20" class="chip-bg" />
+          <text x="35" y="14" class="card-chip" text-anchor="middle">Security</text>
+        </g>
       </g>
-      
-      <!-- CTA -->
-      <g transform="translate(0, 165)">
-        <rect x="0" y="0" width="120" height="30" class="view-btn" />
-        <text x="60" y="19" class="view-text" text-anchor="middle">VIEW PROJECT</text>
+
+      <!-- Status detail -->
+      <text x="0" y="172" font-family="'JetBrains Mono', monospace" font-size="9" fill="#71717A">&#9654; Zero-knowledge identity isolation</text>
+
+      <!-- Action Button -->
+      <g transform="translate(0, 192)">
+        <rect width="160" height="26" class="btn-box" />
+        <text x="80" y="17" class="btn-txt" text-anchor="middle">VIEW PLATFORM &#8594;</text>
       </g>
     </g>
+
+    <rect x="1" y="1" width="423" height="258" fill="none" stroke="rgba(34, 211, 238, 0.25)" stroke-width="1.5" rx="11" />
   </g>
 </svg>

@@ -1,61 +1,133 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="250">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 230" width="100%" height="230">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap');
-      .card-bg { fill: rgba(255,255,255,0.02); stroke: rgba(255,255,255,0.08); stroke-width: 1; rx: 12; }
-      .card-title { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; fill: #ffffff; letter-spacing: 1px; }
-      .card-desc { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; fill: #9ca3af; }
-      .icon-stroke { stroke: #8B5CF6; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
+
+      .bg-base { fill: #070711; }
+      .card-box { fill: #0D0D1B; stroke: rgba(167, 139, 250, 0.2); stroke-width: 1.5; rx: 10; }
       
-      .glow-accent { fill: url(#glow); opacity: 0.5; }
+      .sec-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; fill: #22D3EE; letter-spacing: 2.5px; }
+      .card-title { font-family: 'Press Start 2P', monospace; font-size: 12px; fill: #F4F4F8; letter-spacing: 1px; }
+      .card-role { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; fill: #A78BFA; letter-spacing: 1.5px; }
+      .card-desc { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; fill: #A1A1AA; line-height: 1.4; }
+      .card-chip { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; fill: #34D399; }
+
+      @keyframes pixelPulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+      .anim-pixel { animation: pixelPulse 3s ease-in-out infinite; }
+      .chip-bg { fill: rgba(52, 211, 153, 0.08); stroke: rgba(52, 211, 153, 0.25); stroke-width: 1; rx: 4; }
     </style>
-    
-    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.3" />
-      <stop offset="100%" stop-color="#050507" stop-opacity="0" />
-    </radialGradient>
+
+    <clipPath id="ident-clip">
+      <rect width="880" height="230" rx="14" />
+    </clipPath>
   </defs>
 
-  <rect width="800" height="250" fill="#050507" />
+  <g clip-path="url(#ident-clip)">
+    <rect width="880" height="230" class="bg-base" />
 
-  <!-- Section Title -->
-  <text x="400" y="40" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#6366F1" letter-spacing="3" text-anchor="middle">A LITTLE ABOUT ARYA</text>
-  
-  <g transform="translate(40, 80)">
-    <!-- Card 1: Software Builder -->
-    <g transform="translate(0, 0)">
-      <rect width="220" height="130" class="card-bg" />
-      <circle cx="110" cy="65" r="80" class="glow-accent" />
-      <!-- Icon (Code/Terminal) -->
-      <path d="M20,25 L35,40 L20,55 M45,55 L60,55" class="icon-stroke" transform="translate(0, 0) scale(0.6)" />
-      
-      <text x="25" y="65" class="card-title">SOFTWARE BUILDER</text>
-      <text x="25" y="90" class="card-desc">Architecting robust systems</text>
-      <text x="25" y="110" class="card-desc">from frontend to backend.</text>
+    <!-- Section Sub-header -->
+    <text x="440" y="32" class="sec-tag" text-anchor="middle">&#9670; SYSTEM SUBSYSTEMS // CORE DOMAINS &#9670;</text>
+
+    <!-- Cards Row -->
+    <g transform="translate(30, 52)">
+      <!-- Card 1: Intelligent Systems & ML -->
+      <g transform="translate(0, 0)">
+        <rect width="258" height="152" class="card-box" />
+        <rect x="0" y="0" width="258" height="3" fill="#8B5CF6" rx="1.5" />
+        
+        <!-- Pixel Icon: Neural Brain / CPU Core -->
+        <g transform="translate(20, 20)">
+          <!-- CPU boundary -->
+          <rect x="0" y="0" width="26" height="26" fill="#16152B" stroke="#A78BFA" stroke-width="1.5" rx="3" />
+          <!-- Core center pixel -->
+          <rect x="8" y="8" width="10" height="10" fill="#22D3EE" class="anim-pixel" />
+          <!-- Pin connectors -->
+          <rect x="4" y="-3" width="3" height="3" fill="#A78BFA" />
+          <rect x="11" y="-3" width="3" height="3" fill="#A78BFA" />
+          <rect x="18" y="-3" width="3" height="3" fill="#A78BFA" />
+          <rect x="4" y="26" width="3" height="3" fill="#A78BFA" />
+          <rect x="11" y="26" width="3" height="3" fill="#A78BFA" />
+          <rect x="18" y="26" width="3" height="3" fill="#A78BFA" />
+        </g>
+        
+        <text x="56" y="32" class="card-role">SECTOR 01</text>
+        <text x="56" y="46" class="card-title">NEURAL AI</text>
+
+        <text x="20" y="76" class="card-desc">Architecting hybrid neuro-symbolic</text>
+        <text x="20" y="94" class="card-desc">solvers, LLM contract extractors,</text>
+        <text x="20" y="112" class="card-desc">&amp; edge vision pipelines.</text>
+
+        <!-- Tech Chip -->
+        <g transform="translate(20, 126)">
+          <rect width="218" height="18" class="chip-bg" />
+          <text x="109" y="13" class="card-chip" text-anchor="middle">Z3 &#183; PyTorch &#183; YOLOv8 &#183; SMT</text>
+        </g>
+      </g>
+
+      <!-- Card 2: Algorithms & Systems -->
+      <g transform="translate(281, 0)">
+        <rect width="258" height="152" class="card-box" />
+        <rect x="0" y="0" width="258" height="3" fill="#22D3EE" rx="1.5" />
+
+        <!-- Pixel Icon: Algorithm / DNA Helix / Graph Nodes -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="26" height="26" fill="#0C1D2A" stroke="#22D3EE" stroke-width="1.5" rx="3" />
+          <!-- Nodes and edges -->
+          <circle cx="6" cy="7" r="3" fill="#22D3EE" />
+          <circle cx="20" cy="7" r="3" fill="#34D399" />
+          <circle cx="13" cy="19" r="3" fill="#A78BFA" />
+          <line x1="6" y1="7" x2="20" y2="7" stroke="rgba(34, 211, 238, 0.6)" stroke-width="1" />
+          <line x1="6" y1="7" x2="13" y2="19" stroke="rgba(34, 211, 238, 0.6)" stroke-width="1" />
+          <line x1="20" y1="7" x2="13" y2="19" stroke="rgba(34, 211, 238, 0.6)" stroke-width="1" />
+        </g>
+
+        <text x="56" y="32" class="card-role">SECTOR 02</text>
+        <text x="56" y="46" class="card-title">ALGO LAB</text>
+
+        <text x="20" y="76" class="card-desc">Deterministic sequence matching,</text>
+        <text x="20" y="94" class="card-desc">adaptive banded DP retries, and</text>
+        <text x="20" y="112" class="card-desc">algebraic ECC error frameworks.</text>
+
+        <!-- Tech Chip -->
+        <g transform="translate(20, 126)">
+          <rect width="218" height="18" class="chip-bg" />
+          <text x="109" y="13" class="card-chip" text-anchor="middle">KMP &#183; Banded DP &#183; Python &#183; SMT</text>
+        </g>
+      </g>
+
+      <!-- Card 3: Creative Tech & Fullstack -->
+      <g transform="translate(562, 0)">
+        <rect width="258" height="152" class="card-box" />
+        <rect x="0" y="0" width="258" height="3" fill="#34D399" rx="1.5" />
+
+        <!-- Pixel Icon: Screen / Interactive 3D Canvas -->
+        <g transform="translate(20, 20)">
+          <rect x="0" y="0" width="26" height="26" fill="#0A2218" stroke="#34D399" stroke-width="1.5" rx="3" />
+          <!-- Retro cube wireframe inside -->
+          <polygon points="13,5 21,9 13,13 5,9" fill="none" stroke="#34D399" stroke-width="1" />
+          <polygon points="5,9 13,13 13,21 5,17" fill="none" stroke="#22D3EE" stroke-width="1" />
+          <polygon points="21,9 13,13 13,21 21,17" fill="none" stroke="#A78BFA" stroke-width="1" />
+        </g>
+
+        <text x="56" y="32" class="card-role">SECTOR 03</text>
+        <text x="56" y="46" class="card-title">CREATIVE DEV</text>
+
+        <text x="20" y="76" class="card-desc">Scroll-driven WebGL journeys,</text>
+        <text x="20" y="94" class="card-desc">Next.js avionics telemetry dashboards,</text>
+        <text x="20" y="112" class="card-desc">&amp; full-stack responsive web apps.</text>
+
+        <!-- Tech Chip -->
+        <g transform="translate(20, 126)">
+          <rect width="218" height="18" class="chip-bg" />
+          <text x="109" y="13" class="card-chip" text-anchor="middle">TypeScript &#183; Next.js &#183; Three.js &#183; GSAP</text>
+        </g>
+      </g>
     </g>
-    
-    <!-- Card 2: AI Explorer -->
-    <g transform="translate(250, 0)">
-      <rect width="220" height="130" class="card-bg" />
-      <circle cx="110" cy="65" r="80" class="glow-accent" />
-      <!-- Icon (Neural/AI) -->
-      <path d="M25,40 A15,15 0 1,1 40,25 M40,25 L40,55 M25,40 L55,40 M40,55 A15,15 0 1,1 55,40" class="icon-stroke" transform="translate(0, 0) scale(0.6)" />
-      
-      <text x="25" y="65" class="card-title">AI EXPLORER</text>
-      <text x="25" y="90" class="card-desc">Integrating intelligence</text>
-      <text x="25" y="110" class="card-desc">and data into applications.</text>
-    </g>
-    
-    <!-- Card 3: System Thinker -->
-    <g transform="translate(500, 0)">
-      <rect width="220" height="130" class="card-bg" />
-      <circle cx="110" cy="65" r="80" class="glow-accent" />
-      <!-- Icon (Layers/System) -->
-      <path d="M20,30 L40,20 L60,30 L40,40 Z M20,40 L40,50 L60,40 M20,50 L40,60 L60,50" class="icon-stroke" transform="translate(0, 0) scale(0.6)" />
-      
-      <text x="25" y="65" class="card-title">SYSTEM THINKER</text>
-      <text x="25" y="90" class="card-desc">Designing for scale,</text>
-      <text x="25" y="110" class="card-desc">reliability, and impact.</text>
-    </g>
+
+    <!-- Border highlight -->
+    <rect x="1" y="1" width="878" height="228" fill="none" stroke="rgba(167, 139, 250, 0.25)" stroke-width="1.5" rx="13" />
   </g>
 </svg>

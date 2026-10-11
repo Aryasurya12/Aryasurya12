@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 250" width="100%" height="250">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
+
+      .bg-base { fill: #070711; }
+      .bg-card { fill: #0D0D1B; stroke: rgba(34, 211, 238, 0.22); stroke-width: 1.5; rx: 12; }
+
+      .card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; fill: #22D3EE; letter-spacing: 2.5px; }
+      .card-title { font-family: 'Press Start 2P', monospace; font-size: 15px; fill: #F4F4F8; letter-spacing: 1px; }
+      .card-desc { font-family: 'Space Grotesk', sans-serif; font-size: 13px; fill: #A1A1AA; line-height: 1.45; }
+      .card-chip { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #22D3EE; }
+
+      .btn-box { fill: rgba(34, 211, 238, 0.12); stroke: #22D3EE; stroke-width: 1; rx: 6; }
+      .btn-txt { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600; fill: #F4F4F8; letter-spacing: 1.5px; }
+
+      /* Animation for avionics radar sweep */
+      @keyframes radarSweep {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .anim-sweep { animation: radarSweep 6s linear infinite; transform-origin: 110px 90px; }
+
+      @keyframes gatePulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+      }
+      .anim-gate { animation: gatePulse 2s ease-in-out infinite; }
+
+      .chip-bg { fill: rgba(34, 211, 238, 0.08); stroke: rgba(34, 211, 238, 0.25); stroke-width: 1; rx: 4; }
+    </style>
+
+    <radialGradient id="astro-glow" cx="80%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#070711" stop-opacity="0" />
+    </radialGradient>
+
+    <clipPath id="astro-clip">
+      <rect width="880" height="250" rx="14" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#astro-clip)">
+    <rect width="880" height="250" class="bg-base" />
+    <rect width="880" height="250" fill="url(#astro-glow)" />
+    <rect x="8" y="8" width="864" height="234" class="bg-card" />
+
+    <!-- Left accent strip -->
+    <rect x="8" y="8" width="5" height="234" fill="#22D3EE" />
+
+    <!-- CONTENT (LEFT) -->
+    <g transform="translate(42, 36)">
+      <text x="0" y="0" class="card-tag">&#9670; EDGE AVIONICS AI // SPACE HABITAT COPILOT</text>
+      <text x="0" y="30" class="card-title">ASTROFLOW AI</text>
+      
+      <text x="0" y="64" class="card-desc">Zero-cloud on-board edge copilot for Bharatiya Antariksh Station (BAS)</text>
+      <text x="0" y="84" class="card-desc">experiments. Combines BiLSTM + Attention spatial-kinematics with YOLOv8,</text>
+      <text x="0" y="104" class="card-desc">a 5-gate anti-hallucination finite-state machine, and 100% offline voice guidance.</text>
+
+      <!-- Key Tech Chips -->
+      <g transform="translate(0, 130)">
+        <g transform="translate(0, 0)">
+          <rect width="90" height="22" class="chip-bg" />
+          <text x="45" y="15" class="card-chip" text-anchor="middle">BiLSTM+Attn</text>
+        </g>
+        <g transform="translate(98, 0)">
+          <rect width="80" height="22" class="chip-bg" />
+          <text x="40" y="15" class="card-chip" text-anchor="middle">YOLOv8</text>
+        </g>
+        <g transform="translate(186, 0)">
+          <rect width="95" height="22" class="chip-bg" />
+          <text x="47" y="15" class="card-chip" text-anchor="middle">5-Gate FSM</text>
+        </g>
+        <g transform="translate(289, 0)">
+          <rect width="85" height="22" class="chip-bg" />
+          <text x="42" y="15" class="card-chip" text-anchor="middle">Offline TTS</text>
+        </g>
+        <g transform="translate(382, 0)">
+          <rect width="80" height="22" class="chip-bg" />
+          <text x="40" y="15" class="card-chip" text-anchor="middle">Next.js 16</text>
+        </g>
+      </g>
+
+      <!-- Action Button -->
+      <g transform="translate(0, 166)">
+        <rect width="180" height="28" class="btn-box" />
+        <text x="90" y="18" class="btn-txt" text-anchor="middle">INSPECT REPOSITORY &#8594;</text>
+      </g>
+    </g>
+
+    <!-- RIGHT: Pixel Avionics HUD / Radar Visual -->
+    <g transform="translate(620, 36)">
+      <rect x="0" y="0" width="220" height="178" fill="#06121A" stroke="rgba(34, 211, 238, 0.3)" stroke-width="1.5" rx="8" />
+      <text x="110" y="24" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#22D3EE" text-anchor="middle">AVIONICS RADAR // 30 FPS</text>
+
+      <!-- Radar circles -->
+      <circle cx="110" cy="95" r="50" fill="none" stroke="rgba(34, 211, 238, 0.2)" stroke-width="1" />
+      <circle cx="110" cy="95" r="30" fill="none" stroke="rgba(34, 211, 238, 0.3)" stroke-width="1" />
+      <circle cx="110" cy="95" r="10" fill="none" stroke="rgba(34, 211, 238, 0.4)" stroke-width="1" />
+      <line x1="60" y1="95" x2="160" y2="95" stroke="rgba(34, 211, 238, 0.2)" stroke-width="1" />
+      <line x1="110" y1="45" x2="110" y2="145" stroke="rgba(34, 211, 238, 0.2)" stroke-width="1" />
+
+      <!-- Radar sweep beam -->
+      <g class="anim-sweep">
+        <line x1="110" y1="95" x2="155" y2="70" stroke="#22D3EE" stroke-width="2" />
+        <polygon points="110,95 155,70 160,85" fill="rgba(34, 211, 238, 0.2)" />
+      </g>
+
+      <!-- 5-Gate indicators at bottom -->
+      <g transform="translate(15, 154)">
+        <text x="0" y="10" font-family="'JetBrains Mono', monospace" font-size="8" fill="#A1A1AA">5-GATES:</text>
+        <circle cx="56" cy="7" r="4" fill="#34D399" class="anim-gate" />
+        <circle cx="74" cy="7" r="4" fill="#34D399" class="anim-gate" />
+        <circle cx="92" cy="7" r="4" fill="#34D399" class="anim-gate" />
+        <circle cx="110" cy="7" r="4" fill="#34D399" class="anim-gate" />
+        <circle cx="128" cy="7" r="4" fill="#34D399" class="anim-gate" />
+        <text x="142" y="10" font-family="'JetBrains Mono', monospace" font-size="8" fill="#34D399">LOCKED</text>
+      </g>
+    </g>
+
+    <rect x="1" y="1" width="878" height="248" fill="none" stroke="rgba(34, 211, 238, 0.25)" stroke-width="1.5" rx="13" />
+  </g>
+</svg>

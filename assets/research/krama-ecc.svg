@@ -1,85 +1,121 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="250">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 250" width="100%" height="250">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=Inter:wght@400;600&amp;display=swap');
-      
-      .bg { fill: #0B0B12; stroke: rgba(255,255,255,0.08); stroke-width: 1; rx: 16; }
-      
-      .stage-title { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; fill: #a1a1aa; letter-spacing: 2px; }
-      .title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; fill: #ffffff; letter-spacing: 1px; }
-      
-      .flow-path { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 2; stroke-dasharray: 4, 4; }
-      .flow-pulse { fill: none; stroke: url(#gradient-accent); stroke-width: 3; }
-      
-      .node-box { fill: #050507; stroke: rgba(255,255,255,0.15); stroke-width: 1; rx: 8; }
-      
-      @keyframes flow {
-        0% { stroke-dashoffset: 100; opacity: 0; }
-        20% { opacity: 1; }
-        80% { opacity: 1; }
-        100% { stroke-dashoffset: -100; opacity: 0; }
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
+
+      .bg-base { fill: #070711; }
+      .bg-card { fill: #0D0D1B; stroke: rgba(167, 139, 250, 0.22); stroke-width: 1.5; rx: 12; }
+
+      .card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; fill: #A78BFA; letter-spacing: 2.5px; }
+      .card-title { font-family: 'Press Start 2P', monospace; font-size: 15px; fill: #F4F4F8; letter-spacing: 1px; }
+      .card-desc { font-family: 'Space Grotesk', sans-serif; font-size: 13px; fill: #A1A1AA; line-height: 1.45; }
+      .card-chip { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #A78BFA; }
+
+      .btn-box { fill: rgba(167, 139, 250, 0.12); stroke: #8B5CF6; stroke-width: 1; rx: 6; }
+      .btn-txt { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600; fill: #F4F4F8; letter-spacing: 1.5px; }
+
+      @keyframes streamFlow {
+        0% { stroke-dashoffset: 40; }
+        100% { stroke-dashoffset: -40; }
       }
-      .anim-flow { animation: flow 5s linear infinite; stroke-dasharray: 40, 200; }
-      
-      .glow { fill: url(#glow-center); opacity: 0.2; }
+      .anim-stream { stroke-dasharray: 8, 8; animation: streamFlow 2.5s linear infinite; }
+
+      .chip-bg { fill: rgba(167, 139, 250, 0.08); stroke: rgba(167, 139, 250, 0.25); stroke-width: 1; rx: 4; }
     </style>
 
-    <linearGradient id="gradient-accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#8B5CF6" />
-      <stop offset="50%" stop-color="#06B6D4" />
-      <stop offset="100%" stop-color="#10B981" />
-    </linearGradient>
-
-    <radialGradient id="glow-center" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#06B6D4" stop-opacity="1" />
-      <stop offset="100%" stop-color="#050507" stop-opacity="0" />
+    <radialGradient id="krama-glow" cx="80%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#070711" stop-opacity="0" />
     </radialGradient>
+
+    <clipPath id="krama-clip">
+      <rect width="880" height="250" rx="14" />
+    </clipPath>
   </defs>
 
-  <rect width="800" height="250" fill="#050507" />
-  
-  <rect width="798" height="248" x="1" y="1" class="bg" />
+  <g clip-path="url(#krama-clip)">
+    <rect width="880" height="250" class="bg-base" />
+    <rect width="880" height="250" fill="url(#krama-glow)" />
+    <rect x="8" y="8" width="864" height="234" class="bg-card" />
 
-  <text x="400" y="40" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#ffffff" letter-spacing="2" text-anchor="middle">KRAMA-P&#256;&#7788;HA INSPIRED ECC</text>
-  <text x="400" y="65" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#8B5CF6" letter-spacing="3" text-anchor="middle">RESEARCH VISUALIZATION</text>
+    <!-- Left accent strip -->
+    <rect x="8" y="8" width="5" height="234" fill="#8B5CF6" />
 
-  <g transform="translate(60, 120)">
-    <!-- Base Flow Line -->
-    <path class="flow-path" d="M 50 25 L 630 25" />
-    
-    <!-- Animated Flow -->
-    <path class="flow-pulse anim-flow" d="M 50 25 L 630 25" />
-    <path class="flow-pulse anim-flow" d="M 50 25 L 630 25" style="animation-delay: 2.5s;" />
+    <!-- CONTENT (LEFT) -->
+    <g transform="translate(42, 36)">
+      <text x="0" y="0" class="card-tag">&#9670; RESEARCH EXPLORATION // INFORMATION THEORY &amp; ECC</text>
+      <text x="0" y="30" class="card-title">KRAMA-P&#256;&#7788;HA ERROR CORRECTION</text>
+      
+      <text x="0" y="64" class="card-desc">An exploratory algorithmic framework studying ancient Vedic recitation permutation</text>
+      <text x="0" y="84" class="card-desc">structures (Krama-P&#257;&#7789;ha pairs: 1-2, 2-3, 3-4) for low-latency transmission</text>
+      <text x="0" y="104" class="card-desc">error resilience, overlapping redundancy tokens, and hardware-friendly decoding.</text>
 
-    <!-- Nodes -->
-    <!-- 1: DATA -->
-    <rect x="0" y="0" width="100" height="50" class="node-box" />
-    <text x="50" y="29" class="stage-title" text-anchor="middle">RAW DATA</text>
-    
-    <!-- 2: KRAMA CHAIN -->
-    <rect x="140" y="-15" width="120" height="80" class="node-box" stroke="#8B5CF6" />
-    <circle cx="200" cy="25" r="50" class="glow" />
-    <text x="200" y="20" class="stage-title" fill="#8B5CF6" text-anchor="middle">KRAMA</text>
-    <text x="200" y="38" class="stage-title" fill="#8B5CF6" text-anchor="middle">CHAINING</text>
-    
-    <!-- 3: SYNDROME -->
-    <rect x="300" y="0" width="100" height="50" class="node-box" />
-    <text x="350" y="29" class="stage-title" text-anchor="middle">SYNDROME</text>
-    
-    <!-- 4: RECONSTRUCTION -->
-    <rect x="440" y="-15" width="120" height="80" class="node-box" stroke="#06B6D4" />
-    <circle cx="500" cy="25" r="50" class="glow" />
-    <text x="500" y="20" class="stage-title" fill="#06B6D4" text-anchor="middle">ERROR</text>
-    <text x="500" y="38" class="stage-title" fill="#06B6D4" text-anchor="middle">RECOVERY</text>
-    
-    <!-- 5: CORRECTED -->
-    <rect x="600" y="0" width="100" height="50" class="node-box" stroke="#10B981" />
-    <text x="650" y="29" class="stage-title" fill="#10B981" text-anchor="middle">CORRECTED</text>
-    
-    <!-- Arrows -->
-    <path d="M 100 25 L 135 25 M 125 15 L 135 25 L 125 35" fill="none" stroke="#666" stroke-width="2" />
-    <path d="M 260 25 L 295 25 M 285 15 L 295 25 L 285 35" fill="none" stroke="#666" stroke-width="2" />
-    <path d="M 400 25 L 435 25 M 425 15 L 435 25 L 425 35" fill="none" stroke="#666" stroke-width="2" />
-    <path d="M 560 25 L 595 25 M 585 15 L 595 25 L 585 35" fill="none" stroke="#666" stroke-width="2" />
+      <!-- Key Tech Chips -->
+      <g transform="translate(0, 130)">
+        <g transform="translate(0, 0)">
+          <rect width="130" height="22" class="chip-bg" />
+          <text x="65" y="15" class="card-chip" text-anchor="middle">Overlapping Pairs</text>
+        </g>
+        <g transform="translate(138, 0)">
+          <rect width="115" height="22" class="chip-bg" />
+          <text x="57" y="15" class="card-chip" text-anchor="middle">Burst Resilience</text>
+        </g>
+        <g transform="translate(261, 0)">
+          <rect width="135" height="22" class="chip-bg" />
+          <text x="67" y="15" class="card-chip" text-anchor="middle">Information Theory</text>
+        </g>
+        <g transform="translate(404, 0)">
+          <rect width="105" height="22" class="chip-bg" />
+          <text x="52" y="15" class="card-chip" text-anchor="middle">Algorithmic ECC</text>
+        </g>
+      </g>
+
+      <!-- Current status note -->
+      <g transform="translate(0, 172)">
+        <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#34D399">&#9654; STATUS: CONCEPTUAL ALGORITHMIC MODEL &amp; HARDWARE SIMULATION DESIGN</text>
+      </g>
+    </g>
+
+    <!-- RIGHT: Pixel Recitation Chain Visual -->
+    <g transform="translate(620, 36)">
+      <rect x="0" y="0" width="220" height="178" fill="#0C0A1A" stroke="rgba(167, 139, 250, 0.3)" stroke-width="1.5" rx="8" />
+      <text x="110" y="24" font-family="'JetBrains Mono', monospace" font-size="9" fill="#A78BFA" text-anchor="middle">OVERLAPPING KRAMA CHAIN</text>
+
+      <!-- Pair Tokens (1-2), (2-3), (3-4) -->
+      <g transform="translate(15, 45)">
+        <!-- Raw Stream -->
+        <text x="10" y="12" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#71717A">STREAM: [ W1 | W2 | W3 | W4 ]</text>
+
+        <!-- Krama Pair 1 -->
+        <g transform="translate(10, 24)">
+          <rect width="75" height="22" fill="#181534" stroke="#8B5CF6" stroke-width="1" rx="3" />
+          <text x="37" y="15" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#22D3EE" text-anchor="middle">[ W1 - W2 ]</text>
+        </g>
+
+        <!-- Krama Pair 2 -->
+        <g transform="translate(105, 24)">
+          <rect width="75" height="22" fill="#181534" stroke="#8B5CF6" stroke-width="1" rx="3" />
+          <text x="37" y="15" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#22D3EE" text-anchor="middle">[ W2 - W3 ]</text>
+        </g>
+
+        <!-- Krama Pair 3 -->
+        <g transform="translate(57, 56)">
+          <rect width="75" height="22" fill="#181534" stroke="#34D399" stroke-width="1" rx="3" />
+          <text x="37" y="15" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#34D399" text-anchor="middle">[ W3 - W4 ]</text>
+        </g>
+
+        <!-- Overlap link arrows -->
+        <path d="M 47,46 L 47,56 L 57,67" fill="none" stroke="#22D3EE" stroke-width="1.5" class="anim-stream" />
+        <path d="M 142,46 L 142,56 L 132,67" fill="none" stroke="#22D3EE" stroke-width="1.5" class="anim-stream" />
+      </g>
+
+      <!-- Parity check info -->
+      <g transform="translate(15, 152)">
+        <text x="0" y="10" font-family="'JetBrains Mono', monospace" font-size="8" fill="#A1A1AA">RECOVERY:</text>
+        <text x="65" y="10" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="600" fill="#34D399">ZERO-PACKET LOSS</text>
+      </g>
+    </g>
+
+    <rect x="1" y="1" width="878" height="248" fill="none" stroke="rgba(167, 139, 250, 0.25)" stroke-width="1.5" rx="13" />
   </g>
 </svg>
